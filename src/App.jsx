@@ -9,24 +9,28 @@ import Nosotros from './pages/Nosotros/NosotrosPage';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-
-import FondoPages from './assets/fondonubes.jpg';
-
 function App() {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
   return (
-    <div className="app-root"
-      style={{ backgroundImage: `url('/img/fondonubes.jpg')` }}>
-
-
-      <Router basename={import.meta.env.BASE_URL}>
+    <div
+      className="app-root"
+      style={{
+        backgroundImage: `url(${baseUrl}img/fondonubes.jpg)`,
+      }}
+    >
+      <Router basename={baseUrl}>
         <Header />
         <Routes>
-          <Route path="/" element={
-            <>
-              <Inicio />
-              <Nosotros />
-            </>
-          } />
+          <Route
+            path="/"
+            element={
+              <>
+                <Inicio />
+                <Nosotros />
+              </>
+            }
+          />
           <Route path="/characters" element={<CharactersPage />} />
           <Route path="/location" element={<Locations />} />
           <Route path="/episodes" element={<Episodes />} />
