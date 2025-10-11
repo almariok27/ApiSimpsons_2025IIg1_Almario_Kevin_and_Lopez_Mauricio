@@ -1,0 +1,30 @@
+#main-locations {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.titulo-locations {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2rem;
+    color: #f59c25;
+    text-shadow: 2px 2px 0 #000;
+    margin-bottom: 20px;
+}
+
+#contenedor-lugares {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    width: 100%;
+    max-width: 1500px;
+}
+
+.loading-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+}

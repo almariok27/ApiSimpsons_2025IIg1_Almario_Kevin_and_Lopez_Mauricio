@@ -1,0 +1,115 @@
+#card {
+    width: 260px;
+    height: 360px;
+    border-radius: 5%;
+    background-color: #F2C641;
+}
+
+.container-img {
+    aspect-ratio: 1 / 1;
+    width: 70%;
+    border-radius: 5%;
+}
+
+.Img-container {
+    height: 60%;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container-img img {
+    border-radius: 5%;
+    max-width: 100%;
+    max-height: 100%;
+    height: auto;
+    width: auto;
+    background-color: #4AB0D9;
+}
+
+.Info-container {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    padding: 10px;
+    height: 40%;
+
+
+    h1 {
+        font-size: 1.2rem;
+        text-align: center;
+        font-weight: bold;
+        text-align: center;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    h2 {
+        text-align: center;
+        font-size: 0.9rem;
+        font-weight: 350;
+        text-align: center;
+        word-wrap: break-word;
+        white-space: normal;
+        overflow-wrap: break-word;
+    }
+
+    div {
+        text-align: center;
+    }
+
+    p {
+        font-size: 0.8rem;
+        font-style: italic;
+        color: gray;
+        text-align: center;
+    }
+}
+
+.Span1 {
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 5px;
+    border: 1px rgb(240, 236, 236) solid;
+    padding: 3px 8px;
+    border-radius: 20px;
+    display: inline-block;
+}
+
+.Span2 {
+    font-weight: bold;
+    font-size: 12px;
+    margin-right: 5px;
+    border: 1px rgb(226, 239, 213) solid;
+    background-color: #f9f8f6;
+    padding: 3px 8px;
+    border-radius: 20px;
+    display: inline-block;
+    color: rgb(100, 213, 100);
+}
+
+.card-link {
+    text-decoration: none;
+    color: inherit; 
+    display: inline-block; 
+    transition: all 0.3s ease; 
+}
+
+#card,
+.container-img,
+.container-img img {
+    transition: all 0.3s ease;
+}
+
+.card-link:hover #card {
+    transform: scale(1.05);
+    box-shadow: 0px 0px 15px 3px #3f6ca6;
+}
+
+.card-link:hover .container-img img {
+    transform: rotate(6deg);
+    box-shadow: 0px 0px 10px 2px #3f6ca6;
+}

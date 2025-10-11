@@ -1,0 +1,33 @@
+#main-characters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    min-height: 100vh;
+}
+
+.titulo-characters {
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    font-size: 2.5rem;
+    color: #f59c25;
+    text-shadow: 2px 2px 0 #000;
+}
+
+#contenedorCartas {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    width: 100%;
+    max-width: 1500px;
+    margin-top: 10px;
+
+}
+
+.loading-text {
+    font-size: 1.3rem;
+    font-weight: bold;
+    color: #000;
+    text-align: center;
+    width: 100%;
+}

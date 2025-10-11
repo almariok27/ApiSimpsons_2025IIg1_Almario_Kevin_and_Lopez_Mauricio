@@ -1,0 +1,304 @@
+#main1 {
+    display: flex;
+    align-items: start;
+    justify-content: center;
+    padding: 20px;
+    min-height: 100vh;
+    width: 100vw;
+    box-sizing: border-box;
+    transition: all 0.4s ease;
+}
+
+#CardInfo {
+    border-radius: 15px;
+    width: 90%;
+    max-width: 1200px;
+    display: flex;
+    flex-wrap: wrap;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+    background-color: #fff;
+    transition: all 0.4s ease;
+}
+
+#section1 {
+    width: 55%;
+    display: flex;
+    flex-direction: column;
+    border-right: 1px solid #ccc;
+    padding: 10px;
+    transition: all 0.4s ease;
+}
+
+.Artsection1 {
+    width: 100%;
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    padding: 10px 0;
+    box-sizing: border-box;
+    border: none;
+    transition: all 0.3s ease;
+}
+
+.Artsection1.info-basica {
+    flex-direction: row;
+    border-bottom: 1px dashed #ccc;
+}
+
+.Artsection1.descripcion-y-frases {
+    flex-direction: column;
+}
+
+.containerImg {
+    width: 35%;
+    min-width: 140px;
+    border-radius: 10px;
+    overflow: hidden;
+    margin-right: 20px;
+    transition: all 0.4s ease;
+}
+
+#imgp {
+    width: 100%;
+    object-fit: contain;
+    background-color: #4AB0D9;
+    border-radius: 10px;
+    padding: 5px;
+    transition: transform 0.3s ease;
+}
+
+#imgp:hover {
+    transform: scale(1.1);
+}
+
+.containerInfo {
+    width: 65%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 0 15px;
+}
+
+.containerInfo h1 {
+    font-size: clamp(1.6rem, 2.2vw, 2.5rem);
+    color: #DBA71A;
+    margin: 0 0 5px 0;
+    text-align: left;
+    line-height: 1.1;
+    transition: all 0.3s ease;
+}
+
+.containerInfo h2 {
+    font-size: clamp(1rem, 1.2vw, 1.3rem);
+    font-weight: 700;
+    margin: 0 0 10px 0;
+    color: #444;
+}
+
+.containerInfo p {
+    font-size: clamp(0.9rem, 1vw, 1rem);
+    margin: 5px 0;
+    font-weight: 500;
+    text-align: left;
+}
+
+.status-tag {
+    margin-left: 10px;
+    padding: 4px 8px;
+    border-radius: 12px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.status-tag.alive {
+    background-color: #8BC34A;
+    color: white;
+}
+
+.status-tag.dead {
+    background-color: #F44336;
+    color: white;
+}
+
+.InfoComplet {
+    width: 95%;
+    margin-top: 10px;
+}
+
+.description-container,
+.phrases-container {
+    padding: 0 10px;
+    margin-bottom: 20px;
+}
+
+.description-container h3,
+.phrases-container h3 {
+    font-size: 1.3rem;
+    color: #222;
+    border-bottom: 2px solid #DBA71A;
+    padding-bottom: 5px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.description-container p {
+    text-align: justify;
+    line-height: 1.6;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.phrases-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.phrase-bubble {
+    background-color: #FFC107;
+    color: #222;
+    padding: 8px 15px;
+    border-radius: 20px;
+    font-size: 0.9rem;
+    font-style: italic;
+    font-weight: 600;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+#section2 {
+    width: 45%;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: #f7f7f7;
+    transition: all 0.4s ease;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #DBA71A;
+    margin-bottom: 20px;
+    border-bottom: 3px solid #DBA71A;
+    padding-bottom: 5px;
+    width: 100%;
+    text-align: center;
+}
+
+.aparicion-card {
+    width: 90%;
+    background: #fff;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+}
+
+.aparicion-card:hover {
+    transform: scale(1.05);
+}
+
+.aparicion-card h3 {
+    font-size: 1.1rem;
+    color: #4AB0D9;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.aparicion-card img {
+    width: 100%;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    object-fit: cover;
+}
+
+
+@media (max-width: 1024px) {
+    #CardInfo {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #section1,
+    #section2 {
+        width: 100%;
+        border-right: none;
+    }
+
+    #section1 {
+        border-bottom: 1px solid #ccc;
+        padding: 20px;
+    }
+
+    .Artsection1.info-basica {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .containerImg {
+        width: 60%;
+        margin: 0 0 15px 0;
+    }
+
+    .containerInfo {
+        width: 100%;
+        align-items: center;
+        text-align: center;
+    }
+
+    .containerInfo h1,
+    .containerInfo h2,
+    .containerInfo p {
+        text-align: center;
+    }
+
+    .phrases-list {
+        justify-content: center;
+    }
+}
+
+@media (max-width: 600px) {
+    #main1 {
+        padding: 10px;
+    }
+
+    #CardInfo {
+        width: 100%;
+        border-radius: 0;
+    }
+
+    .containerImg {
+        width: 80%;
+    }
+
+    .containerInfo h1 {
+        font-size: 1.8rem;
+    }
+
+    .containerInfo h2 {
+        font-size: 1rem;
+    }
+
+    .description-container h3,
+    .phrases-container h3 {
+        font-size: 1.1rem;
+    }
+
+    .phrase-bubble {
+        font-size: 0.8rem;
+        padding: 6px 10px;
+    }
+
+    .section-title {
+        font-size: 1.3rem;
+    }
+
+    .aparicion-card {
+        width: 95%;
+        padding: 10px;
+    }
+}
