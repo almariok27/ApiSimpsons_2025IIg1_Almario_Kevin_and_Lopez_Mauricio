@@ -4,6 +4,10 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
+import ImglOGO from '../../assets/titulo.png'
+import ImgCharacters from '../../assets/3.png'
+import ImgLocations from '../../assets/2.png'
+import ImgEpisodes from '../../assets/1.png'
 
 const Header = () => {
     const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -14,34 +18,34 @@ const Header = () => {
         <>
             <div className={`mobile-menu ${isMenuOpen ? 'open' : ''}`}>
                 <Link to="/episodes" onClick={closeMenu}>
-                    <img src="src/assets/1.png" alt="Episodios" className="nav-icon" />
+                    <img src={ImgEpisodes} alt="Episodios" className="nav-icon" />
                 </Link>
                 <Link to="/location" onClick={closeMenu}>
-                    <img src="src/assets/2.png" alt="Ubicaciones" className="nav-icon" />
+                    <img src={ImgLocations} alt="Ubicaciones" className="nav-icon" />
                 </Link>
                 <Link to="/characters" onClick={closeMenu}>
-                    <img src="src/assets/3.png" alt="Personajes" className="nav-icon" />
+                    <img src={ImgCharacters} alt="Personajes" className="nav-icon" />
                 </Link>
             </div>
 
             <header>
                 <section className="section1">
                     <Link to="/" className="logo-link" onClick={closeMenu}>
-                        <img className="logo" src="src/assets/titulo.png" alt="Logo" />
+                        <img className="logo" src={ImglOGO} alt="Logo" />
                     </Link>
                 </section>
 
                 <section className="nav-section">
                     <nav>
                         <Link to="/episodes">
-                            <img src="src/assets/1.png" alt="Episodes" className="nav-icon" />
-                        </Link>
-                        <Link to="/location">
-                            <img src="src/assets/2.png" alt="Personajes" className="nav-icon" />
-                        </Link>
-                        <Link to="/characters">
-                            <img src="src/assets/3.png" alt="Ubicación" className="nav-icon" />
-                        </Link>
+                    <img src={ImgEpisodes} alt="Episodios" className="nav-icon" />
+                </Link>
+                <Link to="/location">
+                    <img src={ImgLocations} alt="Ubicaciones" className="nav-icon" />
+                </Link>
+                <Link to="/characters" >
+                    <img src={ImgCharacters} alt="Personajes" className="nav-icon" />
+                </Link>
                     </nav>
                 </section>
 

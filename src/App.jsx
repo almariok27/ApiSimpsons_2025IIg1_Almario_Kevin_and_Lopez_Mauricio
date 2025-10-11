@@ -11,19 +11,19 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 function App() {
   return (
-    <Router>
+    <Router basename={import.meta.env.BASE_URL}>
       <Header />
       <Routes>
-        <Route path="/characters" element={<CharactersPage />} />
-        <Route path="/location" element={<Locations />} />
-        <Route path="/episodes" element={<Episodes />} />
-        <Route path="/characters/:id" element={<CharactersInfo />} />
         <Route path="/" element={
           <>
           <Inicio />
           <Nosotros />
           </>
           }/>      
+        <Route path="/characters" element={<CharactersPage />} />
+        <Route path="/location" element={<Locations />} />
+        <Route path="/episodes" element={<Episodes />} />
+        <Route path="/characters/:id" element={<CharactersInfo />} />
       </Routes>
     </Router>
   );
