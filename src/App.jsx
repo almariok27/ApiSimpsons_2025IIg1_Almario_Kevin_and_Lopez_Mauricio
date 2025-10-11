@@ -15,7 +15,7 @@ import FondoPages from './assets/fondonubes.jpg';
 function App() {
   return (
     <div className="app-root"
-      style={{ backgroundImage: `url(${FondoPages})` }}>
+      style={{ backgroundImage: `url('/img/fondonubes.jpg')` }}>
 
 
       <Router basename={import.meta.env.BASE_URL}>
