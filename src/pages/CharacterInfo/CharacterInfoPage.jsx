@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation, useNavigate } from 'react-router-dom';
+
 import './CharacterInfoPage.css';
+
 
 const URL_BASE_IMAGEN = 'https://cdn.thesimpsonsapi.com/500';
 
@@ -30,6 +32,9 @@ const CharacterInfoPage = () => {
     const { id } = useParams();
     const [personaje, setPersonaje] = useState(null);
     const [loading, setLoading] = useState(true);
+    const location = useLocation();
+    const navigate = useNavigate();
+    const fromPage = location.state?.fromPage || 1;
 
     useEffect(() => {
         fetch(`https://thesimpsonsapi.com/api/characters/${id}`)
@@ -51,55 +56,59 @@ const CharacterInfoPage = () => {
 
     return (
         <main id="main1">
-            <div id="CardInfo">
-                <section id="section1">
-                    <article className="Artsection1 info-basica">
-                        <div className="containerImg">
-                            <img src={rutaCompletaImagen} alt={personaje.name} id="imgp" />
-                        </div>
-                        <div className="containerInfo">
-                            <h1>{personaje.name}</h1>
-                            <h2> {personaje.age} Años,
-                                <span className={`status-tag ${personaje.status === 'Alive' ? 'alive' : 'dead'}`}>
-                                    {personaje.status}
-                                </span>
-                            </h2>
-                            <p className="ocupacion">Ocupación: {personaje.occupation}</p>
-                            <p className="genero">Género: {personaje.gender}</p>
-                            <p className="nacimiento">Nacimiento: {personaje.birthdate}</p>
-                        </div>
-                    </article>
-
-                    <article className="Artsection1 descripcion-y-frases">
-                        <div className="InfoComplet">
-                            <div className="description-container">
-                                <h3>Descripción</h3>
-                                <p>{personaje.description}</p>
+            <div className="card-wrapper">
+                <div id="CardInfo">
+                    <section id="section1">
+                        <article className="Artsection1 info-basica">
+                            <div className="containerImg">
+                                <img src={rutaCompletaImagen} alt={personaje.name} id="imgp" />
                             </div>
+                            <div className="containerInfo">
+                                <h1>{personaje.name}</h1>
+                                <h2>
+                                    {personaje.age} Años,
+                                    <span className={`status-tag ${personaje.status === 'Alive' ? 'alive' : 'dead'}`}>
+                                        {personaje.status}
+                                    </span>
+                                </h2>
+                                <p className="ocupacion">Ocupación: {personaje.occupation}</p>
+                                <p className="genero">Género: {personaje.gender}</p>
+                                <p className="nacimiento">Nacimiento: {personaje.birthdate}</p>
+                            </div>
+                        </article>
 
-                            <div className="phrases-container">
-                                <h3>Frases Famosas</h3>
-                                <div className="phrases-list">
-                                    {personaje.phrases && personaje.phrases.map((phrase, index) => (
-                                        <span key={index} className="phrase-bubble">"{phrase}"</span>
-                                    ))}
+                        <article className="Artsection1 descripcion-y-frases">
+                            <div className="InfoComplet">
+                                <div className="description-container">
+                                    <h3>Descripción</h3>
+                                    <p>{personaje.description}</p>
+                                </div>
+
+                                <div className="phrases-container">
+                                    <h3>Frases Famosas</h3>
+                                    <div className="phrases-list">
+                                        {personaje.phrases && personaje.phrases.map((phrase, index) => (
+                                            <span key={index} className="phrase-bubble">"{phrase}"</span>
+                                        ))}
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                    </article>
-                </section>
+                        </article>
+                    </section>
 
-                <section id="section2">
-                    <h2 className="section-title">Primeras Apariciones</h2>
-                    <AparicionCard
-                        tipo="Episodio"
-                        detalle={personaje.first_appearance_ep}
-                    />
-                    <AparicionCard
-                        tipo="Corto"
-                        detalle={personaje.first_appearance_sh}
-                    />
-                </section>
+                    <section id="section2">
+                        <h2 className="section-title">Primeras Apariciones</h2>
+                        <AparicionCard tipo="Episodio" detalle={personaje.first_appearance_ep} />
+                        <AparicionCard tipo="Corto" detalle={personaje.first_appearance_sh} />
+                    </section>
+                </div>
+
+                <button
+                    className="btn-volver"
+                    onClick={() => navigate(`/characters?page=${fromPage}`)}
+                >
+                    ⬅️ Volver a la página {fromPage}
+                </button>
             </div>
         </main>
     );

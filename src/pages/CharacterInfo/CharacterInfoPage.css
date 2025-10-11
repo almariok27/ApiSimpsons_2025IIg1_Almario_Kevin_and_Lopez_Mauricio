@@ -21,6 +21,25 @@
     transition: all 0.4s ease;
 }
 
+.btn-volver {
+    margin-top: 30px;
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+    color: #000;
+    font-weight: bold;
+    border: 2px solid #0066CC;
+    border-radius: 25px;
+    padding: 10px 25px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.btn-volver:hover {
+    background: linear-gradient(135deg, #FFA500, #FF8C00);
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 102, 204, 0.4);
+}
+
 #section1 {
     width: 55%;
     display: flex;
@@ -301,4 +320,10 @@
         width: 95%;
         padding: 10px;
     }
+}
+.card-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
 }

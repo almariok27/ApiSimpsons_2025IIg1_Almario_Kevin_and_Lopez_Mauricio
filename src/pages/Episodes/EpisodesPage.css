@@ -18,13 +18,13 @@
 }
 
 .episodes-container {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-    gap: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
     width: 100%;
-    max-width: 1400px;
-    margin-top: 20px;
-    padding: 20px;
+    max-width: 1500px;
+    margin-top: 10px;
 }
 
 .loading-container,

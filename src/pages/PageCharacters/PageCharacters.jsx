@@ -3,6 +3,8 @@ import "./PageCharacters.css";
 import Card from "../../components/CardCharacter/CardCharacter";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
+import { Link } from 'react-router-dom';
+
 
 const PageCharacters = () => {
     const [personajes, setPersonajes] = useState([]);
@@ -12,7 +14,7 @@ const PageCharacters = () => {
 
     const handlePageChange = (event, value) => {
         setCurrentPage(value);
-        window.scrollTo({ top: 0, behavior: "smooth" }); 
+        window.scrollTo({ top: 0, behavior: "smooth" });
     };
 
     useEffect(() => {
@@ -40,7 +42,7 @@ const PageCharacters = () => {
                         setTotalPages(nextPage);
                     }
                 } else {
-                    setTotalPages(50); 
+                    setTotalPages(50);
                 }
             } catch (error) {
                 console.error("Error al cargar personajes:", error);
@@ -61,7 +63,14 @@ const PageCharacters = () => {
                     <p className="loading-text">Cargando personajes...</p>
                 ) : personajes.length > 0 ? (
                     personajes.map((item, index) => (
-                        <Card personajes={item} key={item.id || index} />
+                        <Link
+                            to={`/character/${item.id}`}
+                            state={{ fromPage: currentPage }}
+                            key={item.id || index}
+                            style={{ textDecoration: 'none' }}
+                        >
+                            <Card personajes={item} />
+                        </Link>
                     ))
                 ) : (
                     <p>No se encontraron personajes. Intenta volver a una página anterior.</p>
