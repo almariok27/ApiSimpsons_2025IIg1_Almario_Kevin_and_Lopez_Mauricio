@@ -4,7 +4,7 @@ import GitHubIcon from '@mui/icons-material/GitHub';
 import MenuIcon from '@mui/icons-material/Menu';
 import CloseIcon from '@mui/icons-material/Close';
 import { Link } from 'react-router-dom';
-import ImglOGO from '../../assets/titulo.png'
+import logo from '../../assets/titulo.png';
 import ImgCharacters from '../../assets/3.png'
 import ImgLocations from '../../assets/2.png'
 import ImgEpisodes from '../../assets/1.png'
@@ -31,7 +31,7 @@ const Header = () => {
             <header>
                 <section className="section1">
                     <Link to="/" className="logo-link" onClick={closeMenu}>
-                        <img className="logo" src={ImglOGO} alt="Logo" />
+                        <img className="logo" src={logo} alt="Logo" />
                     </Link>
                 </section>
 
