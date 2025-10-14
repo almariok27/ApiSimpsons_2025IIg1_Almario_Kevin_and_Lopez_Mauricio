@@ -6,11 +6,22 @@ import Episodes from './pages/Episodes/EpisodesPage';
 import Locations from './pages/Locations/LocationsPage';
 import Inicio from './pages/Inicio/InicioPage';
 import Nosotros from './pages/Nosotros/NosotrosPage';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, useNavigate } from 'react-router-dom';
+import { useEffect } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
-function App() {
+function AppContent() {
+  const navigate = useNavigate();
   const baseUrl = import.meta.env.BASE_URL || '/';
+
+  // ✅ Manejar redirección si viene desde 404.html en GitHub Pages
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const redirectPath = params.get('redirect');
+    if (redirectPath) {
+      navigate(redirectPath);
+    }
+  }, [navigate]);
 
   return (
     <div
@@ -19,25 +30,33 @@ function App() {
         backgroundImage: `url(${baseUrl}img/fondonubes.jpg)`,
       }}
     >
-      <Router basename={baseUrl}>
-        <Header />
-        <Routes>
-          <Route
-            path="/"
-            element={
-              <>
-                <Inicio />
-                <Nosotros />
-              </>
-            }
-          />
-          <Route path="/characters" element={<CharactersPage />} />
-          <Route path="/location" element={<Locations />} />
-          <Route path="/episodes" element={<Episodes />} />
-          <Route path="/characters/:id" element={<CharactersInfo />} />
-        </Routes>
-      </Router>
+      <Header />
+      <Routes>
+        <Route
+          path="/"
+          element={
+            <>
+              <Inicio />
+              <Nosotros />
+            </>
+          }
+        />
+        <Route path="/characters" element={<CharactersPage />} />
+        <Route path="/location" element={<Locations />} />
+        <Route path="/episodes" element={<Episodes />} />
+        <Route path="/characters/:id" element={<CharactersInfo />} />
+      </Routes>
     </div>
+  );
+}
+
+function App() {
+  const baseUrl = import.meta.env.BASE_URL || '/';
+
+  return (
+    <Router basename={baseUrl}>
+      <AppContent />
+    </Router>
   );
 }
 
