@@ -5,6 +5,16 @@
     background-color: #F2C641;
 }
 
+.card-clickable {
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-clickable:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
 .container-img {
     aspect-ratio: 1 / 1;
     width: 70%;
@@ -93,9 +103,9 @@
 
 .card-link {
     text-decoration: none;
-    color: inherit; 
-    display: inline-block; 
-    transition: all 0.3s ease; 
+    color: inherit;
+    display: inline-block;
+    transition: all 0.3s ease;
 }
 
 #card,

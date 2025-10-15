@@ -1,34 +1,32 @@
-import React, { useState, useEffect, useCallback } from "react";
+import React, { useState, useEffect } from "react";
 import "./PageCharacters.css";
 import Card from "../../components/CardCharacter/CardCharacter";
+import CharacterModal from "../../components/CharacterModal/CharacterModal";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { Link, useLocation, useNavigate } from 'react-router-dom'; 
+
 
 const PageCharacters = () => {
-    const location = useLocation();
-    const navigate = useNavigate();
-    const getPageFromUrl = useCallback(() => {
-        const params = new URLSearchParams(location.search);
-        return parseInt(params.get('page')) || 1;
-    }, [location.search]);
-
     const [personajes, setPersonajes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(getPageFromUrl()); 
+    const [currentPage, setCurrentPage] = useState(1);
     const [totalPages, setTotalPages] = useState(1);
-
-    useEffect(() => {
-        const urlPage = getPageFromUrl();
-        if (urlPage !== currentPage) {
-            setCurrentPage(urlPage);
-        }
-    }, [location.search, getPageFromUrl]);
+    const [selectedCharacterId, setSelectedCharacterId] = useState(null);
+    const [isModalOpen, setIsModalOpen] = useState(false);
 
     const handlePageChange = (event, value) => {
-        navigate(`/characters?page=${value}`); 
         setCurrentPage(value);
         window.scrollTo({ top: 0, behavior: "smooth" });
+    };
+
+    const handleCardClick = (characterId) => {
+        setSelectedCharacterId(characterId);
+        setIsModalOpen(true);
+    };
+
+    const handleCloseModal = () => {
+        setIsModalOpen(false);
+        setSelectedCharacterId(null);
     };
 
     useEffect(() => {
@@ -41,7 +39,6 @@ const PageCharacters = () => {
                 if (!response.ok) {
                     console.error(`Error HTTP: ${response.status}`);
                     setPersonajes([]);
-
                     return;
                 }
 
@@ -50,6 +47,12 @@ const PageCharacters = () => {
 
                 if (data.info && data.info.pages) {
                     setTotalPages(data.info.pages);
+                } else if (data.next || data.previous) {
+                    const nextUrl = data.next;
+                    if (nextUrl) {
+                        const nextPage = parseInt(nextUrl.split("page=")[1]);
+                        setTotalPages(nextPage);
+                    }
                 } else {
                     setTotalPages(50);
                 }
@@ -62,7 +65,7 @@ const PageCharacters = () => {
         };
 
         fetchCharacters();
-    }, [currentPage]); 
+    }, [currentPage]);
 
     return (
         <main id="main-characters">
@@ -72,14 +75,11 @@ const PageCharacters = () => {
                     <p className="loading-text">Cargando personajes...</p>
                 ) : personajes.length > 0 ? (
                     personajes.map((item, index) => (
-                        <Link
-                            to={`/character/${item.id}`}
-                            state={{ fromPage: currentPage }} 
+                        <Card
                             key={item.id || index}
-                            style={{ textDecoration: 'none' }}
-                        >
-                            <Card personajes={item} />
-                        </Link>
+                            personajes={item}
+                            onClick={handleCardClick}
+                        />
                     ))
                 ) : (
                     <p>No se encontraron personajes. Intenta volver a una página anterior.</p>
@@ -105,6 +105,12 @@ const PageCharacters = () => {
                     />
                 </Stack>
             )}
+
+            <CharacterModal
+                characterId={selectedCharacterId}
+                isOpen={isModalOpen}
+                onClose={handleCloseModal}
+            />
         </main>
     );
 };

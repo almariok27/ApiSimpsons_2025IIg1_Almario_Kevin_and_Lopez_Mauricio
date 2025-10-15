@@ -1,7 +1,7 @@
 import './App.css';
 import Header from './components/Header/Header';
+import Footer from './components/Footer/Footer';
 import CharactersPage from './pages/PageCharacters/PageCharacters';
-import CharactersInfo from './pages/CharacterInfo/CharacterInfoPage';
 import Episodes from './pages/Episodes/EpisodesPage';
 import Locations from './pages/Locations/LocationsPage';
 import Inicio from './pages/Inicio/InicioPage';
@@ -43,8 +43,8 @@ function AppContent() {
         <Route path="/characters" element={<CharactersPage />} />
         <Route path="/location" element={<Locations />} />
         <Route path="/episodes" element={<Episodes />} />
-        <Route path="/characters/:id" element={<CharactersInfo />} />
       </Routes>
+      <Footer></Footer>
     </div>
   );
 }
