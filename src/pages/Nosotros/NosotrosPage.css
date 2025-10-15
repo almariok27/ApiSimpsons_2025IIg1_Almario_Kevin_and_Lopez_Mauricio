@@ -1,6 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Simpsonfont&family=Creepster&family=Fredoka+One:wght@400&display=swap');
 
-/* --- SECCIÓN --- */
 .seccion-equipo {
     width: 100%;
     min-height: 100vh;
@@ -20,7 +19,6 @@
     text-align: center;
 }
 
-/* --- TARJETAS --- */
 .tarjetas-container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -30,7 +28,6 @@
     width: 100%;
 }
 
-/* --- EFECTO FLIP --- */
 .tarjeta-flip {
     background: transparent;
     width: 300px;
@@ -52,7 +49,6 @@
     transform: rotateY(180deg);
 }
 
-/* --- LADO FRONTAL --- */
 .tarjeta-flip-front,
 .tarjeta-flip-back {
     position: absolute;
@@ -76,7 +72,6 @@
     object-fit: cover;
 }
 
-/* --- LADO POSTERIOR --- */
 .tarjeta-flip-back {
     background: linear-gradient(145deg, #fffbe0, #ffe066);
     color: #333;
@@ -110,7 +105,6 @@
     line-height: 1.4;
 }
 
-/* --- RESPONSIVE --- */
 @media (max-width: 600px) {
     .tarjetas-container {
         grid-template-columns: 1fr;

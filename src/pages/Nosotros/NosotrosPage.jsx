@@ -8,8 +8,6 @@ const Nosotros = () => {
         <div id="equipo-desarrollo" className="seccion-equipo">
             <h2 className="titulo-equipo">Equipo de Desarrollo</h2>
             <div className="tarjetas-container">
-
-                {/* --- TARJETA MAURICIO --- */}
                 <div className="tarjeta-flip">
                     <div className="tarjeta-flip-inner">
                         <div className="tarjeta-flip-front">
@@ -25,8 +23,6 @@ const Nosotros = () => {
                         </div>
                     </div>
                 </div>
-
-                {/* --- TARJETA KEVIN --- */}
                 <div className="tarjeta-flip">
                     <div className="tarjeta-flip-inner">
                         <div className="tarjeta-flip-front">

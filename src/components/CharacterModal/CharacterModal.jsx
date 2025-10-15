@@ -9,10 +9,10 @@ const AparicionCard = ({ tipo, detalle }) => {
     const rutaCompletaImagen = URL_BASE_IMAGEN + detalle.image_path;
 
     return (
-        <div className="aparicion-card">
+        <div className="characterModal-aparicion-card">
             <h3>Primera Aparición en {tipo}</h3>
             <img src={rutaCompletaImagen} alt={detalle.name} />
-            <div className="aparicion-detalle">
+            <div className="characterModal-aparicion-detalle">
                 <h4>{detalle.name}</h4>
                 <p>
                     T. {detalle.season}, N° {detalle.episode_number}
@@ -72,9 +72,9 @@ const CharacterModal = ({ characterId, isOpen, onClose }) => {
 
     if (loading) {
         return (
-            <div className="modal-backdrop" onClick={handleBackdropClick}>
-                <div className="modal-content">
-                    <p className="modal-loading">Cargando...</p>
+            <div className="characterModal-backdrop" onClick={handleBackdropClick}>
+                <div className="characterModal-content">
+                    <p className="characterModal-loading">Cargando...</p>
                 </div>
             </div>
         );
@@ -82,10 +82,10 @@ const CharacterModal = ({ characterId, isOpen, onClose }) => {
 
     if (!personaje) {
         return (
-            <div className="modal-backdrop" onClick={handleBackdropClick}>
-                <div className="modal-content">
-                    <p className="modal-error">No se encontró el personaje.</p>
-                    <button className="btn-cerrar-modal" onClick={onClose}>✕</button>
+            <div className="characterModal-backdrop" onClick={handleBackdropClick}>
+                <div className="characterModal-content">
+                    <p className="characterModal-error">No se encontró el personaje.</p>
+                    <button className="characterModal-close" onClick={onClose}>✕</button>
                 </div>
             </div>
         );
@@ -94,53 +94,51 @@ const CharacterModal = ({ characterId, isOpen, onClose }) => {
     const rutaCompletaImagen = URL_BASE_IMAGEN + personaje.portrait_path;
 
     return (
-        <div className="modal-backdrop" onClick={handleBackdropClick}>
-            <div className="modal-content">
-                <button className="btn-cerrar-modal" onClick={onClose} title="Cerrar">
+        <div className="characterModal-backdrop" onClick={handleBackdropClick}>
+            <div className="characterModal-content">
+                <button className="characterModal-close" onClick={onClose} title="Cerrar">
                     ✕
                 </button>
                 
-                <div className="modal-card-info">
-                    <section className="modal-section1">
-                        <article className="modal-info-basica">
-                            <div className="modal-container-img">
+                <div className="characterModal-card-info">
+                    <section className="characterModal-section1">
+                        <article className="characterModal-info-basica">
+                            <div className="characterModal-img">
                                 <img src={rutaCompletaImagen} alt={personaje.name} />
                             </div>
-                            <div className="modal-container-info">
+                            <div className="characterModal-info">
                                 <h1>{personaje.name}</h1>
                                 <h2>
                                     {personaje.age} Años,
-                                    <span className={`modal-status-tag ${personaje.status === 'Alive' ? 'alive' : 'dead'}`}>
+                                    <span className={`characterModal-status ${personaje.status === 'Alive' ? 'alive' : 'dead'}`}>
                                         {personaje.status}
                                     </span>
                                 </h2>
-                                <p className="modal-ocupacion">Ocupación: {personaje.occupation}</p>
-                                <p className="modal-genero">Género: {personaje.gender}</p>
-                                <p className="modal-nacimiento">Nacimiento: {personaje.birthdate}</p>
+                                <p>Ocupación: {personaje.occupation}</p>
+                                <p>Género: {personaje.gender}</p>
+                                <p>Nacimiento: {personaje.birthdate}</p>
                             </div>
                         </article>
 
-                        <article className="modal-descripcion-frases">
-                            <div className="modal-info-completa">
-                                <div className="modal-description-container">
-                                    <h3>Descripción</h3>
-                                    <p>{personaje.description}</p>
-                                </div>
+                        <article>
+                            <div className="characterModal-description">
+                                <h3>Descripción</h3>
+                                <p>{personaje.description}</p>
+                            </div>
 
-                                <div className="modal-phrases-container">
-                                    <h3>Frases Famosas</h3>
-                                    <div className="modal-phrases-list">
-                                        {personaje.phrases && personaje.phrases.map((phrase, index) => (
-                                            <span key={index} className="modal-phrase-bubble">"{phrase}"</span>
-                                        ))}
-                                    </div>
+                            <div className="characterModal-phrases">
+                                <h3>Frases Famosas</h3>
+                                <div className="characterModal-phrases-list">
+                                    {personaje.phrases && personaje.phrases.map((phrase, index) => (
+                                        <span key={index} className="characterModal-phrase">"{phrase}"</span>
+                                    ))}
                                 </div>
                             </div>
                         </article>
                     </section>
 
-                    <section className="modal-section2">
-                        <h2 className="modal-section-title">Primeras Apariciones</h2>
+                    <section className="characterModal-section2">
+                        <h2 className="characterModal-section-title">Primeras Apariciones</h2>
                         <AparicionCard tipo="Episodio" detalle={personaje.first_appearance_ep} />
                         <AparicionCard tipo="Corto" detalle={personaje.first_appearance_sh} />
                     </section>
