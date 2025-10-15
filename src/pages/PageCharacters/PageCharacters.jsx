@@ -1,18 +1,32 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import "./PageCharacters.css";
 import Card from "../../components/CardCharacter/CardCharacter";
 import Pagination from "@mui/material/Pagination";
 import Stack from "@mui/material/Stack";
-import { Link } from 'react-router-dom';
-
+import { Link, useLocation, useNavigate } from 'react-router-dom'; 
 
 const PageCharacters = () => {
+    const location = useLocation();
+    const navigate = useNavigate();
+    const getPageFromUrl = useCallback(() => {
+        const params = new URLSearchParams(location.search);
+        return parseInt(params.get('page')) || 1;
+    }, [location.search]);
+
     const [personajes, setPersonajes] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [currentPage, setCurrentPage] = useState(getPageFromUrl()); 
     const [totalPages, setTotalPages] = useState(1);
 
+    useEffect(() => {
+        const urlPage = getPageFromUrl();
+        if (urlPage !== currentPage) {
+            setCurrentPage(urlPage);
+        }
+    }, [location.search, getPageFromUrl]);
+
     const handlePageChange = (event, value) => {
+        navigate(`/characters?page=${value}`); 
         setCurrentPage(value);
         window.scrollTo({ top: 0, behavior: "smooth" });
     };
@@ -27,6 +41,7 @@ const PageCharacters = () => {
                 if (!response.ok) {
                     console.error(`Error HTTP: ${response.status}`);
                     setPersonajes([]);
+
                     return;
                 }
 
@@ -35,12 +50,6 @@ const PageCharacters = () => {
 
                 if (data.info && data.info.pages) {
                     setTotalPages(data.info.pages);
-                } else if (data.next || data.previous) {
-                    const nextUrl = data.next;
-                    if (nextUrl) {
-                        const nextPage = parseInt(nextUrl.split("page=")[1]);
-                        setTotalPages(nextPage);
-                    }
                 } else {
                     setTotalPages(50);
                 }
@@ -53,7 +62,7 @@ const PageCharacters = () => {
         };
 
         fetchCharacters();
-    }, [currentPage]);
+    }, [currentPage]); 
 
     return (
         <main id="main-characters">
@@ -65,7 +74,7 @@ const PageCharacters = () => {
                     personajes.map((item, index) => (
                         <Link
                             to={`/character/${item.id}`}
-                            state={{ fromPage: currentPage }}
+                            state={{ fromPage: currentPage }} 
                             key={item.id || index}
                             style={{ textDecoration: 'none' }}
                         >

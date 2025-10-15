@@ -14,7 +14,6 @@ function AppContent() {
   const navigate = useNavigate();
   const baseUrl = import.meta.env.BASE_URL || '/';
 
-  // ✅ Manejar redirección si viene desde 404.html en GitHub Pages
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const redirectPath = params.get('redirect');
